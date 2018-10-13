@@ -9,6 +9,10 @@
 </div>
 
 <div class="form-group">
-    <label for="" class="control-label">email</label>
-    {!! Form::email('email', null, ['class'=>'form-control', 'id'=>'email']) !!}
+    <label for="" class="control-label">Description</label>
+    {!! Form::textarea('desc', null, ['class'=>'form-control', 'id'=>'desc']) !!}
+</div>
+<div class="form-group">
+    <label for="" class="control-label">Upload File</label>
+    {!! Form::file('file', null, ['class'=>'form-control', 'id'=>'file']) !!}
 </div>

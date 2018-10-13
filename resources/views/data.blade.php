@@ -6,7 +6,7 @@
      <div class="row">       
     <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Datatable
+      <h3 class="panel-title">Augmented Reality Assets
           <a href="{{ route('data.create') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create User"><i class="icon-plus"></i> Create</a>
       </h3>
     </div>
@@ -16,7 +16,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>File</th>
+                        <th id="file">File</th>
                         <th>Description</th>
                         <th>Action</th>
                     </tr>
