@@ -46,4 +46,8 @@
 <!-- Sweetalert2 -->
     <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
+
+    {{-- Validator --}}
+    <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
+
     <script src="{{ asset('js/app.js') }}"></script>

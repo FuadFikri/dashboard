@@ -6,7 +6,7 @@ $factory->define(App\Asset::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence,
         'desc' => $faker->text,
-        'file' => $faker->url,
+        // 'file' => $faker->url,
         'thumbnail' => $faker->url,
     ];
 });

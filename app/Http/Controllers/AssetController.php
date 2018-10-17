@@ -16,7 +16,7 @@ class AssetController extends Controller
     public function create()
     { 
         $model = new Asset();
-        return view('templates.form', compact('model'));
+        return view('form', compact('model'));
     }
 
     /**
@@ -27,14 +27,20 @@ class AssetController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' =>'required|string|max:255',
-            'desc' =>'required|string|max:255',
-            'file' =>'file'
-        ]);
+        $input = $request->all();
+        $input['file'] = null;
 
-        $model = Asset::create($request->all());
-        return $model;
+        
+          if ($request->hasFile('file')){
+                 $input['file'] = str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
+                $request->file->move(public_path('/upload'), $input['file']);
+          }
+        Asset::create($input);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Asset Created'
+        ]);
     }
 
     /**
@@ -45,7 +51,7 @@ class AssetController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +62,8 @@ class AssetController extends Controller
      */
     public function edit($id)
     {
-        //
+       $asset =Asset::find($id);
+        return $asset;
     }
 
     /**
@@ -68,33 +75,48 @@ class AssetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $asset = Asset::FindOrFail($id);
+
+        $input['file'] = $asset->file;
+        if ($request->hasFile('file')) {
+            if (!$asset->file == NULL) {
+                unlink(public_path($asset->file));
+            }
+            $input['file'] = '/upload'.str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
+            $request->file->move(public_path('/upload'), $input['file']);
+        }
+        $asset->update($input);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $asset = Asset::FindOrFail($id);
+        if (!$asset->file == NULL ) {
+            unlink(public_path('/upload/'.$asset->file));
+        }
+        Asset::destroy($id);
+
+        return response()->json([
+            'success' =>true,
+            'message' => 'Asset Deleted'
+        ]); 
     }
 
     public function dataTable(){
-        $model = Asset::query();
-        return DataTables::of($model)
-            ->addColumn('action', function($model){
-                return view('templates/_action', [
-                    'model' =>$model,
-                    'url_show' => route('data.show', $model->id),
-                    'url_edit' => route('data.edit', $model->id),
-                    'url_destroy' => route('data.destroy', $model->id),
-                ]);
+        $assets = Asset::query();
+        return Datatables::of($assets)
+            ->addColumn('show_file', function($assets){
+                if ($assets->file == NULL){
+                    return 'No Image';
+                }
+                return '<img class="rounded-square" width="50" height="50" src="'. url('/upload'.$assets->file) .'" alt="">';
             })
-            ->addIndexColumn()
-            ->rawColumns(['action'])
-            -> make(true);
+            ->addColumn('action', function($assets){
+            return  '<a href="#" class="btn btn-info btn-xs" style="margin:2px;"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
+                    '<a onclick="editForm('. $assets->id . ')" style="margin:2px;" class="btn btn-primary btn-xs"><i class =glyphicon glyphicon-eye-edit"></i>Edit</a>' .
+                    '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>';
+        })
+        ->rawColumns(['show_file', 'action'])->make(true);
     }
 }
