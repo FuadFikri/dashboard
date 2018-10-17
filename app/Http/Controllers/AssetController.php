@@ -32,7 +32,7 @@ class AssetController extends Controller
 
         
           if ($request->hasFile('file')){
-                 $input['file'] = str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
+                 $input['file'] =str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
                 $request->file->move(public_path('/upload'), $input['file']);
           }
         Asset::create($input);
@@ -83,7 +83,7 @@ class AssetController extends Controller
             if (!$asset->file == NULL) {
                 unlink(public_path($asset->file));
             }
-            $input['file'] = '/upload'.str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
+            $input['file'] = str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
             $request->file->move(public_path('/upload'), $input['file']);
         }
         $asset->update($input);
@@ -110,7 +110,7 @@ class AssetController extends Controller
                 if ($assets->file == NULL){
                     return 'No Image';
                 }
-                return '<img class="rounded-square" width="50" height="50" src="'. url('/upload'.$assets->file) .'" alt="">';
+                return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
             })
             ->addColumn('action', function($assets){
             return  '<a href="#" class="btn btn-info btn-xs" style="margin:2px;"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
