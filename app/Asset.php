@@ -9,4 +9,5 @@ class Asset extends Model
 {
     use SoftDeletes;
     protected $fillable = ['name','desc','file'];
+    protected $dates = ['deleted_at'];
 }

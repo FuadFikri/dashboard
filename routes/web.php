@@ -18,5 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/data', 'AssetController');
-
-Route::get('/table', 'AssetController@dataTable')->name('table.data');
+// Route::post('data/delete/{id}', 'AssetController@softdelete');
+Route::get('/trash','AssetController@trash')->name('trash');
+Route::get('/tables/trash','AssetController@trash_API')->name('trash_API');
+Route::get('/tables', 'AssetController@dataTable')->name('tables.data');

@@ -12,6 +12,11 @@ class AssetController extends Controller
     {
        return view('data');
     }
+    public function trash()
+    {
+        return view('trash');
+    }
+
 
     public function create()
     { 
@@ -19,12 +24,6 @@ class AssetController extends Controller
         return view('form', compact('model'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $input = $request->all();
@@ -103,6 +102,24 @@ class AssetController extends Controller
         ]); 
     }
 
+    
+
+    public function trash_API(){
+        $assets = Asset::query()->onlyTrashed();
+        return Datatables::of($assets)
+        ->addColumn('show_file', function($assets){
+                if ($assets->file == NULL){
+                    return 'No Image';
+                }
+                return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
+            })
+        ->addColumn('action', function($assets){
+            return '<center><a onclick="deletePermanent('. $assets->id . ')"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
+            '<a onclick="restore('. $assets->id . ')"  style="margin:2px;" class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a></center>';
+        })
+        ->rawColumns(['show_file', 'action'])->make(true);
+    }
+
     public function dataTable(){
         $assets = Asset::query();
         return Datatables::of($assets)
@@ -114,8 +131,8 @@ class AssetController extends Controller
             })
             ->addColumn('action', function($assets){
             return  '<a href="#" class="btn btn-info btn-xs" style="margin:2px;"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
-                    '<a onclick="editForm('. $assets->id . ')" style="margin:2px;" class="btn btn-primary btn-xs"><i class =glyphicon glyphicon-eye-edit"></i>Edit</a>' .
-                    '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>';
+                    '<a onclick="editForm('. $assets->id . ')" style="margin:2px;" class="btn btn-primary btn-xs"><i class =glyphicon glyphicon-eye-edit"></i> Edit</a>' .
+                    '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs "><i class =fa fa-trash"></i>Delete</a>';
         })
         ->rawColumns(['show_file', 'action'])->make(true);
     }
