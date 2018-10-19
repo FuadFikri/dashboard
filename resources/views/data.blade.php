@@ -39,7 +39,7 @@
          var table = $('#dataTable').DataTable({
                       processing: true,
                       serverSide: true,
-                      ajax: "{{ route('table.data') }}",
+                      ajax: "{{ route('tables.data') }}",
                       columns: [
                         {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},
@@ -115,7 +115,7 @@
           });
         } 
 
-
+       
     $(function(){
             $('#modal-form form').validator().on('submit', function (e) {
                 if (!e.isDefaultPrevented()){
