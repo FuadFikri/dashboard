@@ -91,10 +91,33 @@ class AssetController extends Controller
     public function destroy($id)
     {
         $asset = Asset::FindOrFail($id);
+       
+        Asset::destroy($id);
+
+        return response()->json([
+            'success' =>true,
+            'message' => 'Asset Deleted'
+        ]); 
+    }
+
+    public function restore(Request $request, $id)
+    {
+        $asset = Asset::FindOrFail($id);
+        dd($asset);
+        $asset->restore();
+       return response()->json([
+            'success' =>true,
+            'message' => 'Asset Restored'
+        ]); 
+    }
+
+    public function permanent_delete($id)
+    {
+        $asset = Asset::FindOrFail($id);
         if (!$asset->file == NULL ) {
             unlink(public_path('/upload/'.$asset->file));
         }
-        Asset::destroy($id);
+         Asset::forceDelete($id);
 
         return response()->json([
             'success' =>true,
@@ -114,7 +137,7 @@ class AssetController extends Controller
                 return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
             })
         ->addColumn('action', function($assets){
-            return '<center><a onclick="deletePermanent('. $assets->id . ')"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
+            return '<center><a onclick="permanentdelete('. $assets->id . ')"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
             '<a onclick="restore('. $assets->id . ')"  style="margin:2px;" class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a></center>';
         })
         ->rawColumns(['show_file', 'action'])->make(true);

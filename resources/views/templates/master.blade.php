@@ -148,5 +148,6 @@
     
     @include('templates/_script')
     @stack('scripts')
+    @stack('scripts2')
   </body>
 </html>
