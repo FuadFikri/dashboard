@@ -80,7 +80,7 @@ class AssetController extends Controller
         $input['file'] = $asset->file;
         if ($request->hasFile('file')) {
             if (!$asset->file == NULL) {
-                unlink(public_path($asset->file));
+                unlink(public_path('/upload/'.$asset->file));
             }
             $input['file'] = str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
             $request->file->move(public_path('/upload'), $input['file']);

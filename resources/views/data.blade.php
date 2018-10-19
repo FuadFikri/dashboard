@@ -72,6 +72,7 @@
             $('#id').val(data.id);
             $('#name').val(data.name);
             $('#desc').val(data.desc);
+            $('#file').val(data.file);
           },
           error : function() {
               alert("Nothing Data");
