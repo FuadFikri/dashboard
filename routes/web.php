@@ -8,7 +8,7 @@ Route::resource('/data', 'AssetController');
 
 Route::get('/trash','AssetController@trash')->name('trash');
 
-Route::post('trash/{trash}/restore', 'AssetController@restore')->name('restore');
+Route::put('trash/{trash}/restore', 'AssetController@restore')->name('restore');
 
 Route::delete('trash/{trash}', 'AssetController@permanent_delete')->name('permanentdelete');
 

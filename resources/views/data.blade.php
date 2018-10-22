@@ -94,7 +94,7 @@
               $.ajax({
                   url : "{{ url('data') }}" + '/' + id,
                   type : "POST",
-                  data : {'_method' : 'DELETE', '_token' : csrf_token},
+                  data : {'_method' : 'DELETE', '_token' : csrf_token, permanent: false},
                   success : function(data) {
                       table.ajax.reload();
                       swal({

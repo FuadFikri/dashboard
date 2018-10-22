@@ -42,36 +42,17 @@ class AssetController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
        $asset =Asset::find($id);
         return $asset;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $input = $request->all();
@@ -88,44 +69,28 @@ class AssetController extends Controller
         $asset->update($input);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $asset = Asset::FindOrFail($id);
-       
-        Asset::destroy($id);
+        $permanent = $_POST['permanent'];
+        $asset = Asset::withTrashed()->find($id);
+        $permanent == 'TRUE' ? $asset->forceDelete($id) : $asset->delete($id);
 
         return response()->json([
             'success' =>true,
-            'message' => 'Asset Deleted'
+            'message' => $permanent
         ]); 
     }
 
-    public function restore(Request $request, $id)
+    public function restore($id)
     {
-        $asset = Asset::FindOrFail($id);
-        dd($asset);
-        $asset->restore();
+        $asset = Asset::onlyTrashed()->find($id);
+        if ($asset != NULL) $asset->restore();
        return response()->json([
             'success' =>true,
-            'message' => 'Asset Restored'
+            'message' => 'restored'
         ]); 
     }
 
-    public function permanent_delete($id)
-    {
-        $asset = Asset::FindOrFail($id);
-        if (!$asset->file == NULL ) {
-            unlink(public_path('/upload/'.$asset->file));
-        }
-         Asset::forceDelete($id);
-
-        return response()->json([
-            'success' =>true,
-            'message' => 'Asset Deleted'
-        ]); 
-    }
-
-    
 
     public function trash_API(){
         $assets = Asset::query()->onlyTrashed();
@@ -137,7 +102,7 @@ class AssetController extends Controller
                 return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
             })
         ->addColumn('action', function($assets){
-            return '<center><a onclick="permanentdelete('. $assets->id . ')"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
+            return '<center><a onclick="deleteData('. $assets->id . ',true)"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
             '<a onclick="restore('. $assets->id . ')"  style="margin:2px;" class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a></center>';
         })
         ->rawColumns(['show_file', 'action'])->make(true);

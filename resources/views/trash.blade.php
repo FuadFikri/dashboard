@@ -59,8 +59,8 @@
           }).then(function () {
               $.ajax({
                   url : "{{ url('trash') }}" + '/' + id + '/restore',
-                  type : "POST",
-                  data : {'_method' : 'PATCH','_token' : csrf_token},
+                  type : "PUT",
+                  data : {'_method' : 'PUT','_token' : csrf_token},
                   success : function(data) {
                       table.ajax.reload();
                       swal({
@@ -82,7 +82,7 @@
           });
         }
 
-       function permanentdelete(id){
+        function deleteData(id, permanent=TRUE){
           var csrf_token = $('meta[name="csrf-token"]').attr('content');
           swal({
               title: 'Are you sure?',
@@ -94,9 +94,9 @@
               confirmButtonText: 'Yes, delete it!'
           }).then(function () {
               $.ajax({
-                  url : "{{ url('trash/') }}" + id ,
+                  url : "{{ url('data') }}" + '/' + id,
                   type : "POST",
-                  data : {'_method' : 'DELETE', '_token' : csrf_token},
+                  data : {'_method' : 'DELETE', '_token' : csrf_token, permanent: permanent},
                   success : function(data) {
                       table.ajax.reload();
                       swal({
@@ -116,6 +116,7 @@
                   }
               });
           });
-        }  
+        } 
+       
     </script>        
 @endpush
