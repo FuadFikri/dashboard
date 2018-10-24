@@ -73,7 +73,7 @@ class AssetController extends Controller
     {
         $permanent = $_POST['permanent'];
         $asset = Asset::withTrashed()->find($id);
-        $permanent == 'TRUE' ? $asset->forceDelete($id) : $asset->delete($id);
+        $permanent === 'true' ? $asset->forceDelete($id) : $asset->delete($id);
 
         return response()->json([
             'success' =>true,
