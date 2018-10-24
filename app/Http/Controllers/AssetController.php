@@ -115,7 +115,8 @@ class AssetController extends Controller
                 if ($assets->file == NULL){
                     return 'No Image';
                 }
-                return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
+                // return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
+                    return '<a href="'.url('/upload/'.$assets->file) .'" target="_blank" >file</a>';
             })
             ->addColumn('action', function($assets){
             return  '<a href="#" class="btn btn-info btn-xs" style="margin:2px;"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
