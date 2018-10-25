@@ -4,7 +4,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('/data', 'AssetController');
 
 Route::get('/trash','AssetController@trash')->name('trash');
 
@@ -17,3 +16,11 @@ Route::get('/tables/trash','AssetController@trash_API')->name('trash_API');
 
 
 Route::get('/tables', 'AssetController@dataTable')->name('tables.data');
+Auth::routes();
+
+
+//routes yang butuh authentikasi
+Route::middleware('auth')->group(function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('/data', 'AssetController');
+});
