@@ -8,7 +8,7 @@
         <div class="col-md-3 left_col"><!-- edit warna -->
           <div class="left_col scroll-view"  ><!-- edit warna -->
             <div class="navbar nav_title" style="border: 0;"><!-- edit warna -->
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Dashboard Admin</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -20,7 +20,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>Admin</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -58,7 +58,17 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <i class="fa fa-sign-out pull-right">
+                                                     </i>
+                                                     Log Out
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                   </ul>
                 </li>
 
@@ -145,7 +155,7 @@
         <!-- /footer content -->
       </div>
     </div>
-    
+
     @include('templates/_script')
     @stack('scripts')
     @stack('scripts2')

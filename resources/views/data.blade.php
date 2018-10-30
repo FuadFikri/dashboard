@@ -1,9 +1,28 @@
 @extends('templates.master')
 @section('konten')
 <div class="right_col" role="main">
+<!-- top tiles -->
+<div class="row tile_count">
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-user"></i> Total Item</span>
+    <div class="count">2500</div>
+    <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+  </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-clock-o"></i> Item Downloaded</span>
+    <div class="count">123.50</div>
+    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+  </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-user"></i> Item accessed</span>
+    <div class="count green">2,500</div>
+    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+  </div>
+</div>
+<!-- /top tiles -->
     <div class="">
            <div class="clearfix"></div>
-     <div class="row">       
+     <div class="row">
     <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title"> Assets
@@ -22,9 +41,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
-               
+
             </table>
         </div>
 </div>
@@ -114,9 +133,9 @@
                   }
               });
           });
-        } 
+        }
 
-       
+
     $(function(){
             $('#modal-form form').validator().on('submit', function (e) {
                 if (!e.isDefaultPrevented()){
@@ -152,6 +171,6 @@
                     return false;
                 }
             });
-        });  
+        });
     </script>
 @endpush
