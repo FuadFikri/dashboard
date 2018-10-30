@@ -9,7 +9,7 @@
 
     <link rel="icon" href="{{ asset('assets/img/favicon.ico') }}">
 
-    <title>Gentelella Alela! | </title>
+    <title>Dashboard Admin | </title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
     <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="{{ asset('assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet">
     <!-- JQVMap -->
