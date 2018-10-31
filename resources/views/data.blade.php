@@ -51,7 +51,7 @@
 </div>
 </div>
 @include('form')
-
+{{-- @include('preview') --}}
 @endsection
 @push('scripts')
     <script>
@@ -171,6 +171,12 @@
                     return false;
                 }
             });
-        });
+
+        });  
+
+        function preview(id){
+            
+        }
+
     </script>
 @endpush

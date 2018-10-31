@@ -50,7 +50,7 @@ class AssetController extends Controller
     public function edit($id)
     {
        $asset =Asset::find($id);
-        return $asset;
+       return $asset;
     }
 
     public function update(Request $request, $id)
@@ -91,6 +91,18 @@ class AssetController extends Controller
         ]); 
     }
 
+    public function preview($id)
+    {
+        $asset = Asset::find($id);
+        $file = $asset->file;
+        return view('preview',['file'=>$file]);
+    }
+
+
+
+
+
+    // =======API============== //
 
     public function trash_API(){
         $assets = Asset::query()->onlyTrashed();
@@ -118,7 +130,7 @@ class AssetController extends Controller
                     return '<a href="'.url('/upload/'.$assets->file) .'" target="_blank" >'.$assets->file.'</a>';
             })
             ->addColumn('action', function($assets){
-            return  '<a href="#" class="btn btn-info btn-xs" style="margin:2px;"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
+            return  '<a href="'. url('preview/'.$assets->id) .'" class="btn btn-info btn-xs" style="margin:2px;" target="_blank"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
                     '<a onclick="editForm('. $assets->id . ')" style="margin:2px;" class="btn btn-primary btn-xs"><i class =glyphicon glyphicon-eye-edit"></i> Edit</a>' .
                     '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs "><i class =fa fa-trash"></i>Delete</a>';
         })
