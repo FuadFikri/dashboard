@@ -1,6 +1,6 @@
 @extends('templates.master')
 @section('konten')
-  
+
  <!-- top tiles -->
    <div class="right_col" role="main">
           <div class="row tile_count">
@@ -580,8 +580,8 @@
                   </div>
                 </div>
                 <!-- End to do list -->
-                
-               
+
+
                 <!-- end of weather widget -->
               </div>
             </div>
