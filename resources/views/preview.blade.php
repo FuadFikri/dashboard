@@ -52,8 +52,8 @@
 				controls.update();
 
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color(0x778899);
-				scene.fog = new THREE.Fog(0x778899, 2, 1);
+				scene.background = new THREE.Color(0xE8EBED);
+				scene.fog = new THREE.Fog(0xE8EBED, 2, 1);
 
 				
 				stats = new Stats();
