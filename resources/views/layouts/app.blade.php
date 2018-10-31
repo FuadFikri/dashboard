@@ -22,14 +22,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+<body class='login'>
+    @yield('content')
 </body>
 </html>
