@@ -8,13 +8,4 @@
                 </ul>
               </div>
               <div class="menu_section">
-                  <ul class="nav side-menu">
-                  <li><a><i class="fa fa-sign-out" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</i>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form></a></li>
-               </ul>
             </div>
