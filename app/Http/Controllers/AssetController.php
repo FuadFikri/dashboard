@@ -136,4 +136,25 @@ class AssetController extends Controller
         })
         ->rawColumns(['show_file', 'action'])->make(true);
     }
+
+    public function index_api()
+    {
+        $assets = Asset::all();
+        $response = [
+            'msg' => 'assets list',
+            'data' => $assets,
+        ];
+
+        return response()->json($response,200);
+    }
+    public function show_api($id)
+    {
+        $asset = Asset::find($id);
+        $response = [
+            'msg' => 'asset with id '.$id,
+            'data' => $asset,
+        ];
+
+        return response()->json($response,200);
+    }
 }
