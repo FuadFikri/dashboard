@@ -3,6 +3,14 @@
   @include('templates/_head')
 
   <body class="nav-md"><!-- edit warna -->
+      <style>
+            .my_text
+            {
+                font-family:    Arial, Helvetica, sans-serif;
+                font-size:      24px;
+                font-weight:    bold;
+            }
+        </style>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col"><!-- edit warna -->
@@ -15,11 +23,10 @@
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="{{ asset('assets/images/img.jpg') }}" alt="..." class="img-circle profile_img">
-              </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <div class="my_text">
+                    Welcome
+                </div>
                 <h2>Admin</h2>
               </div>
             </div>

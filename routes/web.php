@@ -1,14 +1,11 @@
 <?php
 
+Route::get('/Documentation', 'AssetController@documentation')->name('documentation');
 
 Auth::routes();
-
 //routes yang butuh authentikasi
 Route::middleware('auth')->group(function(){
-
-    Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@home');
-
     Route::resource('/data', 'AssetController');
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/trash','AssetController@trash')->name('trash');
