@@ -28,7 +28,7 @@ class AssetController extends Controller
     {
         $input = $request->all();
         $input['file'] = null;
-        // $url = url('/upload/'.$assets->file);
+        // $url = url('/upload/'.$assegts->file);
         
         
           if ($request->hasFile('file')){
