@@ -101,40 +101,48 @@
 
     function deleteData(id){
           var csrf_token = $('meta[name="csrf-token"]').attr('content');
-          swal({
-              title: 'Are you sure?',
-              text: "You won't be able to revert this!",
-              type: 'warning',
-              showCancelButton: true,
-              cancelButtonColor: '#d33',
-              confirmButtonColor: '#3085d6',
-              confirmButtonText: 'Yes, delete it!'
-          }).then(function () {
-              $.ajax({
-                  url : "{{ url('data') }}" + '/' + id,
-                  type : "POST",
-                  data : {'_method' : 'DELETE', '_token' : csrf_token, permanent: false},
-                  success : function(data) {
-                      table.ajax.reload();
-                      swal({
-                          title: 'Success!',
-                          text: data.message,
-                          type: 'success',
-                          timer: '1500'
-                      })
-                  },
-                  error : function () {
-                      swal({
-                          title: 'Oops...',
-                          text: data.message,
-                          type: 'error',
-                          timer: '1500'
-                      })
-                  }
-              });
-          });
+          Swal({
+                title: 'Are you sure?',
+                text: 'You will not be able to recover this imaginary file!',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, keep it'
+                }).then((result) => {
+                if (result.value) {
+                   $.ajax({
+                        url : "{{ url('data') }}" + '/' + id,
+                        type : "POST",
+                        data : {'_method' : 'DELETE', '_token' : csrf_token, permanent: false},
+                        success : function(data) {
+                            table.ajax.reload();
+                            swal({
+                                title: 'Success!',
+                                text: data.message,
+                                type: 'success',
+                                timer: '1500'
+                            })
+                        },
+                        error : function () {
+                            swal({
+                                title: 'Oops...',
+                                text: data.message,
+                                type: 'error',
+                                timer: '1500'
+                            })
+                        }
+                     });
+                
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                    )
+                }
+            })
+          
         }
-
 
     $(function(){
             $('#modal-form form').validator().on('submit', function (e) {

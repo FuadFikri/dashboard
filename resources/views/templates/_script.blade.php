@@ -45,7 +45,7 @@
 
 <!-- Sweetalert2 -->
     <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.all.min.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
     {{-- Validator --}}
     <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
