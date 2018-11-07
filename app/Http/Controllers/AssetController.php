@@ -33,16 +33,17 @@ class AssetController extends Controller
         $input = $request->all();
         $input['file'] = null;
 
-
           if ($request->hasFile('file')){
                  $input['file'] =str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
                 $request->file->move(public_path('/upload'), $input['file']);
+                
           }
+          
         Asset::create($input);
 
         return response()->json([
             'success' => true,
-            'message' => 'Asset Created'
+            'message' => '$url'
         ]);
     }
 
@@ -102,10 +103,6 @@ class AssetController extends Controller
         return view('preview',['file'=>$file]);
     }
 
-
-
-
-
     // =======API============== //
 
     public function trash_API(){
@@ -118,7 +115,8 @@ class AssetController extends Controller
                 return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
             })
         ->addColumn('action', function($assets){
-            return '<center><a onclick="deleteData('. $assets->id . ',true)"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
+            return '<a href="'. url('preview/'.$assets->id) .'" class="btn btn-info btn-xs" style="margin:2px;" target="_blank"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
+            '<center><a onclick="deleteData('. $assets->id . ',true)"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
             '<a onclick="restore('. $assets->id . ')"  style="margin:2px;" class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a></center>';
         })
         ->rawColumns(['show_file', 'action'])->make(true);
@@ -139,5 +137,26 @@ class AssetController extends Controller
                     '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs "><i class =fa fa-trash"></i>Delete</a>';
         })
         ->rawColumns(['show_file', 'action'])->make(true);
+    }
+
+    public function index_api()
+    {
+        $assets = Asset::all();
+        $response = [
+            'msg' => 'assets list',
+            'data' => $assets,
+        ];
+
+        return response()->json($response,200);
+    }
+    public function show_api($id)
+    {
+        $asset = Asset::find($id);
+        $response = [
+            'msg' => 'asset with id '.$id,
+            'data' => $asset,
+        ];
+
+        return response()->json($response,200);
     }
 }
