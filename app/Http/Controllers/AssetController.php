@@ -38,7 +38,7 @@ class AssetController extends Controller
                 $request->file->move(public_path('/upload'), $input['file']);
                 
           }
-          
+                  
         Asset::create($input);
 
         return response()->json([
@@ -78,8 +78,13 @@ class AssetController extends Controller
     {
         $permanent = $_POST['permanent'];
         $asset = Asset::withTrashed()->find($id);
-        $permanent === 'true' ? $asset->forceDelete($id) : $asset->delete($id);
-
+        
+        if($permanent === 'true'){
+            unlink(public_path('/upload/'.$asset->file));
+            $asset->forceDelete($id);
+        }else{
+            $asset->delete($id);
+        }
         return response()->json([
             'success' =>true,
             'message' => $permanent
