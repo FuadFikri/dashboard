@@ -17,9 +17,13 @@ class AssetController extends Controller
         return view('trash');
     }
 
+    public function Documentation()
+    {
+        return view('documentation');
+    }
 
     public function create()
-    { 
+    {
         $model = new Asset();
         return view('form', compact('model'));
     }
@@ -28,9 +32,7 @@ class AssetController extends Controller
     {
         $input = $request->all();
         $input['file'] = null;
-        // $url = url('/upload/'.$assegts->file);
-        
-        
+
           if ($request->hasFile('file')){
                  $input['file'] =str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
                 $request->file->move(public_path('/upload'), $input['file']);
@@ -47,7 +49,7 @@ class AssetController extends Controller
 
     public function show($id)
     {
-        
+
     }
 
     public function edit($id)
@@ -81,7 +83,7 @@ class AssetController extends Controller
         return response()->json([
             'success' =>true,
             'message' => $permanent
-        ]); 
+        ]);
     }
 
     public function restore($id)
@@ -91,7 +93,7 @@ class AssetController extends Controller
        return response()->json([
             'success' =>true,
             'message' => 'restored'
-        ]); 
+        ]);
     }
 
     public function preview($id)

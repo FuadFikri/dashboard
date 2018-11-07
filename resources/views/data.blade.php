@@ -3,9 +3,12 @@
 <div class="right_col" role="main">
 <!-- top tiles -->
 <div class="row tile_count">
+    <?php
+    $countassets = DB::table('assets')->count();
+    ?>
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
     <span class="count_top"><i class="fa fa-user"></i> Total Item</span>
-    <div class="count">2500</div>
+    <div class="count"><?php echo $countassets ?></div>
     <span class="count_bottom"><i class="green">4% </i> From last Week</span>
   </div>
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -14,7 +17,7 @@
     <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
   </div>
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-    <span class="count_top"><i class="fa fa-user"></i> Item accessed</span>
+    <span class="count_top"><i class="fa fa-user"></i> API accessed</span>
     <div class="count green">2,500</div>
     <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
   </div>
@@ -51,7 +54,7 @@
 </div>
 </div>
 @include('form')
-{{-- @include('preview') --}}
+
 @endsection
 @push('scripts')
     <script>
@@ -179,12 +182,6 @@
                     return false;
                 }
             });
-
-        });  
-
-        function preview(id){
-            
-        }
-
+        });
     </script>
 @endpush
