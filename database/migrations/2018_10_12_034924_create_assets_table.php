@@ -18,6 +18,7 @@ class CreateAssetsTable extends Migration
             $table->string('name');
             $table->text('desc');
             $table->string('file')->nullable();
+            $table->string('url')->nullable();
             $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
