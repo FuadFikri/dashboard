@@ -16,7 +16,14 @@
         <div class="col-md-3 left_col"><!-- edit warna -->
           <div class="left_col scroll-view"  ><!-- edit warna -->
             <div class="navbar nav_title" style="border: 0;"><!-- edit warna -->
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Dashboard Admin</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+                  <span>
+                      @if($user = Auth::user())
+                        Dashboard Admin
+                      @else
+                          Documentation
+                      @endif
+                </span></a>
             </div>
 
             <div class="clearfix"></div>
