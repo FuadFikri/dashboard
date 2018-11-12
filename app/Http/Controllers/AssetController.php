@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Asset;
 use DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class AssetController extends Controller
 {
@@ -32,11 +33,13 @@ class AssetController extends Controller
     {
         $input = $request->all();
         $input['file'] = null;
+        // $input['url'] = null;
 
           if ($request->hasFile('file')){
-                 $input['file'] =str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
-                $request->file->move(public_path('/upload'), $input['file']);
-                
+                 $fileName =str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
+                $request->file->move(public_path('/upload'), $fileName);
+                $input['url'] = url('upload/'.$fileName);
+                $input['file'] = $fileName;
           }
                   
         Asset::create($input);
@@ -70,6 +73,7 @@ class AssetController extends Controller
             }
             $input['file'] = str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
             $request->file->move(public_path('/upload'), $input['file']);
+            $input['url'] = url('upload/'.$input['file']);
         }
         $asset->update($input);
     }
