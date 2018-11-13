@@ -46,7 +46,7 @@ class AssetController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => '$url'
+            'message' => 'success'
         ]);
     }
 
@@ -91,7 +91,7 @@ class AssetController extends Controller
         }
         return response()->json([
             'success' =>true,
-            'message' => $permanent
+            'message' => 'deleted'
         ]);
     }
 
@@ -124,9 +124,9 @@ class AssetController extends Controller
                 return '<img class="rounded-square" width="50" height="50" src="'. url('/upload/'.$assets->file) .'" alt="">';
             })
         ->addColumn('action', function($assets){
-            return '<a href="'. url('preview/'.$assets->id) .'" class="btn btn-info btn-xs" style="margin:2px;" target="_blank"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
-            '<center><a onclick="deleteData('. $assets->id . ',true)"  style="margin:2px;" class="btn btn-danger btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Delete</a>'.
-            '<a onclick="restore('. $assets->id . ')"  style="margin:2px;" class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a></center>';
+            return '<a href="'. url('preview/'.$assets->id) .'" class="btn btn-info btn-xs"  target="_blank"></i>Show</a>'.
+            '<a onclick="deleteData('. $assets->id . ',true)"  class="btn btn-danger btn-xs hapus">Delete</a>'.
+            '<a onclick="restore('. $assets->id . ')"  class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a>';
         })
         ->rawColumns(['show_file', 'action'])->make(true);
     }
@@ -141,9 +141,9 @@ class AssetController extends Controller
                     return '<a href="'.url('/upload/'.$assets->file) .'" target="_blank" >'.$assets->file.'</a>';
             })
             ->addColumn('action', function($assets){
-            return  '<a href="'. url('preview/'.$assets->id) .'" class="btn btn-info btn-xs" style="margin:2px;" target="_blank"><i class="glyphicon glyphicon-eye-open"></i>Show</a>'.
-                    '<a onclick="editForm('. $assets->id . ')" style="margin:2px;" class="btn btn-primary btn-xs"><i class =glyphicon glyphicon-eye-edit"></i> Edit</a>' .
-                    '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs "><i class =fa fa-trash"></i>Delete</a>';
+            return  '<a href="'. url('preview/'.$assets->id) .'" class="btn btn-info btn-xs" style="margin:2px;" target="_blank">Show</a>'.
+                    '<a onclick="editForm('. $assets->id . ')" style="margin:2px;" class="btn btn-primary btn-xs"> Edit</a>' .
+                    '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs ">Delete</a>';
         })
         ->rawColumns(['show_file', 'action'])->make(true);
     }
