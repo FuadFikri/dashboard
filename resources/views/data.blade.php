@@ -37,9 +37,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th width="20%">Name</th>
-                        <th width="40%">Description</th>
-                        <th width="10%"></th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>File</th>
                         <th> </th>
                     </tr>
                 </thead>
@@ -68,7 +68,10 @@
                         {data: 'desc', name: 'desc'},
                         {data: 'show_file', name: 'show_file'},
                         {data: 'action', name: 'action', orderable: false, searchable: false}
-                      ]
+                      ],
+                      "columnDefs": [
+                            { "width": "5%", "targets": 0 }
+                         ]
             });
 
    function addForm() {
