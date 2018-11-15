@@ -8,4 +8,4 @@ API
 
 - index : http://model3d.herokuapp.com/api/assets
 
-- show : http://model3d.herokuapp.com/api/assets/{id}
+- show : http://model3d.herokuapp.com/api/asset/{id}
