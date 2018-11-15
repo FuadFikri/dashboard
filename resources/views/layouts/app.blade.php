@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Dasboard AR</title>
 
     <!-- Scripts -->
     <script src="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}"></script>
