@@ -21,7 +21,7 @@ class UserController extends Controller
             '-password' => 'same:password',
         ]);
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->save();
         return redirect()->back()->with('alert','Updated');
         // return redirect(url('/data'));
