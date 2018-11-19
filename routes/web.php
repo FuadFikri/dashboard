@@ -4,7 +4,7 @@ Route::get('/Documentation', 'AssetController@documentation')->name('documentati
 
 Auth::routes();
 //routes yang butuh authentikasi
-Route::middleware('auth')->group(function(){
+Route::middleware('auth','web')->group(function(){
     Route::get('/home', 'HomeController@home');
     Route::resource('/data', 'AssetController');
     Route::get('/', 'HomeController@index')->name('home');
@@ -14,4 +14,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/tables/trash','AssetController@trash_API')->name('trash_API');
     Route::get('/tables', 'AssetController@dataTable')->name('tables.data');
     Route::get('/preview/{id}', 'AssetController@preview')->name('preview');
+    Route::get('/profile','UserController@edit');
+    Route::put('/profile/update','UserController@update');
 });
