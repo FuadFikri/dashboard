@@ -9,7 +9,7 @@
 
     <link rel="icon" href="{{ asset('assets/img/favicon.ico') }}">
 
-    <title>Dashboard Admin | </title>
+    <title>Dashboard AR </title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
