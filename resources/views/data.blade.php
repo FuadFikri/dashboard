@@ -36,7 +36,8 @@
             <table id="dataTable" class="table table-hover table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Id</th>
+                        <th>No</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>File</th>
@@ -44,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                 </tbody>
 
             </table>
@@ -64,13 +65,16 @@
                       ajax: "{{ route('tables.data') }}",
                       columns: [
                         {data: 'id', name: 'id'},
+                        { data: 'DT_Row_Index', name:'DT_Row_Index'},
                         {data: 'name', name: 'name'},
                         {data: 'desc', name: 'desc'},
                         {data: 'show_file', name: 'show_file'},
                         {data: 'action', name: 'action', orderable: false, searchable: false}
                       ],
                       "columnDefs": [
-                            { "width": "5%", "targets": 0 }
+                          
+                            { "width": "5%", "targets": 1 },
+                            { visible: false, "targets": 0 }
                          ]
             });
 

@@ -145,7 +145,9 @@ class AssetController extends Controller
                     '<a onclick="editForm('. $assets->id . ')" style="margin:2px;" class="btn btn-primary btn-xs"> Edit</a>' .
                     '<a onclick="deleteData('. $assets->id . ')" style="margin:2px;" class="btn btn-danger btn-xs ">Delete</a>';
         })
-        ->rawColumns(['show_file', 'action'])->make(true);
+        ->rawColumns(['show_file', 'action'])
+        ->addIndexColumn()
+        ->make(true);
     }
 
     public function index_api()
