@@ -35,13 +35,12 @@ class AssetController extends Controller
         $input['file'] = null;
         // $input['url'] = null;
 
-          if ($request->hasFile('file')){
-                 $fileName =str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
+        if ($request->hasFile('file')){
+                $fileName =str_slug($input['name'], '-').'.'.$request->file->getClientOriginalExtension();
                 $request->file->move(public_path('/upload'), $fileName);
                 $input['url'] = url('upload/'.$fileName);
                 $input['file'] = $fileName;
-          }
-                  
+        }
         Asset::create($input);
 
         return response()->json([
@@ -57,8 +56,8 @@ class AssetController extends Controller
 
     public function edit($id)
     {
-       $asset =Asset::find($id);
-       return $asset;
+        $asset =Asset::find($id);
+        return $asset;
     }
 
     public function update(Request $request, $id)
@@ -99,7 +98,7 @@ class AssetController extends Controller
     {
         $asset = Asset::onlyTrashed()->find($id);
         if ($asset != NULL) $asset->restore();
-       return response()->json([
+        return response()->json([
             'success' =>true,
             'message' => 'restored'
         ]);
@@ -107,7 +106,7 @@ class AssetController extends Controller
 
     public function preview($id)
     {
-        $asset = Asset::find($id);
+        $asset = Asset::withTrashed()->find($id);
         $file = $asset->file;
         return view('preview',['file'=>$file]);
     }
