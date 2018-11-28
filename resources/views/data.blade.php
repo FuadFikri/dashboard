@@ -74,6 +74,7 @@
                       "columnDefs": [
                           
                             { "width": "5%", "targets": 1 },
+                            { "width": "45%", "targets": 3 },
                             { visible: false, "targets": 0 }
                          ]
             });

@@ -128,7 +128,9 @@ class AssetController extends Controller
             '<a onclick="deleteData('. $assets->id . ',true)"  class="btn btn-danger btn-xs hapus">Delete</a>'.
             '<a onclick="restore('. $assets->id . ')"  class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a>';
         })
-        ->rawColumns(['show_file', 'action'])->make(true);
+        ->rawColumns(['show_file', 'action'])
+        ->addIndexColumn()
+        ->make(true);
     }
 
     public function dataTable(){
