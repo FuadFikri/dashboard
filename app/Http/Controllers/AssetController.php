@@ -124,7 +124,7 @@ class AssetController extends Controller
             })
         ->addColumn('action', function($assets){
             return '<a href="'. url('preview/'.$assets->id) .'" class="btn btn-info btn-xs"  target="_blank"></i>Show</a>'.
-            '<a onclick="deleteData('. $assets->id . ',true)"  class="btn btn-danger btn-xs hapus">Delete</a>'.
+            '<a onclick="deleteData('. $assets->id . ')"  class="btn btn-danger btn-xs hapus">Delete</a>'.
             '<a onclick="restore('. $assets->id . ')"  class="btn btn-success btn-xs hapus"><i class =glyphicon glyphicon-eye-edit"></i>Restore</a>';
         })
         ->rawColumns(['show_file', 'action'])

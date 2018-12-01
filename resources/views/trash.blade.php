@@ -94,7 +94,7 @@
                 })
         }
 
-        function deleteData(id, permanent=TRUE){
+        function deleteData(id,permanent=true){
             var csrf_token = $('meta[name="csrf-token"]').attr('content');
             Swal({
                 title: 'Are you sure?',
