@@ -30,7 +30,6 @@
 
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#homeIndex">URL</a></li>
-                    <li><a data-toggle="tab" href="#ReqIndex">Contoh Request</a></li>
                   </ul>
 
                   <div class="tab-content">
@@ -50,10 +49,6 @@
                                 </tbody>
                               </table>
                     </div>
-                    <div id="ReqIndex" class="tab-pane fade">
-                      <h3>Menu 1</h3>
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
                   </div>
                 </div>
          </div>
@@ -63,7 +58,6 @@
 
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#homeResIndex">Response Sukses</a></li>
-                    <li><a data-toggle="tab" href="#ResGagalIndex">Response Gagal</a></li>
                     <li><a data-toggle="tab" href="#ResPenjelasanIndex">Penjelasan Response</a></li>
                   </ul>
 
@@ -71,13 +65,63 @@
                     <div id="homeResIndex" class="tab-pane fade in active">
                         <script src="https://gist.github.com/irsaiyan/6f4820adf202e3fdde8915221bd5b61a.js"></script>
                     </div>
-                    <div id="ResGagalIndex" class="tab-pane fade">
-                      <h3>Menu 1</h3>
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
                     <div id="ResPenjelasanIndex" class="tab-pane fade">
-                      <h3>Menu 1</h3>
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Komponen</th>
+                              <th>Tipe</th>
+                              <th>Keterangan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>id</td>
+                              <td>int</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>name</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>desc</td>
+                              <td>text</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>file</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>url</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>thumbnail</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>created_at</td>
+                              <td>timestamp</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>updated_at</td>
+                              <td>timestamp</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>deleted_at</td>
+                              <td>timestamp</td>
+                              <td></td>
+                            </tr>
+                          </tbody>
+                        </table>
                     </div>
                   </div>
                 </div>
@@ -109,11 +153,10 @@
              <div class="container">
                   <h2>Ringkasan</h2>
                   <p>Method "Show" untuk melihat detail item yang dipilih.</p>
-
+                  <h2>Contoh Request</h2>
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#homeShow">URL</a></li>
                     <li><a data-toggle="tab" href="#parshow">Parameter</a></li>
-                    <li><a data-toggle="tab" href="#ReqShow">Contoh Request</a></li>
                   </ul>
 
                   <div class="tab-content">
@@ -155,10 +198,6 @@
                           </tbody>
                         </table>
                     </div>
-                    <div id="ReqShow" class="tab-pane fade">
-                      <h3>Menu 2</h3>
-                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                    </div>
                   </div>
                 </div>
          </div>
@@ -177,12 +216,65 @@
                               <script src="https://gist.github.com/irsaiyan/98b11c97cbee15cb2f3a607b91c7ef36.js"></script>
                     </div>
                     <div id="ResGagalShow" class="tab-pane fade">
-                      <h3>Menu 1</h3>
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      <script src="https://gist.github.com/irsaiyan/ea3f59d1d42f44ac13670d29cb71d7c0.js"></script>
                     </div>
                     <div id="ResPenjelasanShow" class="tab-pane fade">
-                      <h3>Menu 1</h3>
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Komponen</th>
+                              <th>Tipe</th>
+                              <th>Keterangan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>id</td>
+                              <td>int</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>name</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>desc</td>
+                              <td>text</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>file</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>url</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>thumbnail</td>
+                              <td>varchar</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>created_at</td>
+                              <td>timestamp</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>updated_at</td>
+                              <td>timestamp</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>deleted_at</td>
+                              <td>timestamp</td>
+                              <td></td>
+                            </tr>
+                          </tbody>
+                        </table>
                     </div>
                   </div>
                 </div>
