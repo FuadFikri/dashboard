@@ -65,7 +65,7 @@
                       ajax: "{{ route('tables.data') }}",
                       columns: [
                         {data: 'id', name: 'id'},
-                        { data: 'DT_Row_Index', name:'DT_Row_Index'},
+                        { data: 'DT_Row_Index', name:'DT_Row_Index',searchable: false},
                         {data: 'name', name: 'name'},
                         {data: 'desc', name: 'desc'},
                         {data: 'show_file', name: 'show_file'},
