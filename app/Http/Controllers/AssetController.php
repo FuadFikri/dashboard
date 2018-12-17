@@ -83,7 +83,9 @@ class AssetController extends Controller
         $asset = Asset::withTrashed()->find($id);
         
         if($permanent === 'true'){
-            unlink(public_path('/upload/'.$asset->file));
+            if (!$asset->file == NULL) {
+                unlink(public_path('/upload/'.$asset->file));
+            }
             $asset->forceDelete($id);
         }else{
             $asset->delete($id);
