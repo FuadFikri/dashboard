@@ -16,7 +16,6 @@
                             <th>No</th>
                             <th width="20%">Name</th>
                             <th width="40%">Description</th>
-                            <th width="10%"></th>
                             <th  ></th>
                         </tr>
                     </thead>
@@ -43,7 +42,6 @@
                         { data: 'DT_Row_Index', name:'DT_Row_Index',searchable: false},
                         {data: 'name', name: 'name'},
                         {data: 'desc', name: 'desc'},
-                         {data: 'show_file', name: 'show_file'},
                         {data: 'action', name: 'action', orderable: false, searchable: false}
                       ],
                       "columnDefs": [
