@@ -4,7 +4,7 @@
 <!-- top tiles -->
 <div class="row tile_count">
     <?php
-    $countassets = DB::table('assets')->count();
+    $countassets = App\Asset::all()->count();
     ?>
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
     <span class="count_top"><i class="fa fa-user"></i> Total Item</span>
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
 
             </table>
@@ -61,7 +61,7 @@
                         {data: 'action', name: 'action', orderable: false, searchable: false}
                       ],
                       "columnDefs": [
-                          
+
                             { "width": "5%", "targets": 1 },
                             { "width": "45%", "targets": 3 },
                             { visible: false, "targets": 0 }
