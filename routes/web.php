@@ -5,8 +5,9 @@ Route::get('/Documentation', 'AssetController@documentation')->name('documentati
 Auth::routes();
 //routes yang butuh authentikasi
 Route::middleware('auth','web')->group(function(){
-    
+
     Route::resource('/data', 'AssetController');
+    Route::get('/home', 'AssetController@index');
     Route::get('/', 'AssetController@index');
     Route::get('/trash','AssetController@trash')->name('trash');
     Route::put('trash/{trash}/restore', 'AssetController@restore')->name('restore');
