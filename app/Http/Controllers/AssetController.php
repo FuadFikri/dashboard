@@ -42,10 +42,11 @@ class AssetController extends Controller
                 $input['file'] = $fileName;
         }
         Asset::create($input);
-
+        $countassets = Asset::all()->count();
         return response()->json([
             'success' => true,
-            'message' => 'success'
+            'message' => 'success',
+            'jumlah' => $countassets
         ]);
     }
 
@@ -90,9 +91,11 @@ class AssetController extends Controller
         }else{
             $asset->delete($id);
         }
+        $countassets = Asset::all()->count();
         return response()->json([
             'success' =>true,
-            'message' => 'deleted'
+            'message' => 'deleted',
+            'jumlah' => $countassets
         ]);
     }
 
@@ -173,4 +176,5 @@ class AssetController extends Controller
 
         return response()->json($response,200);
     }
+
 }

@@ -1,6 +1,6 @@
 @extends('templates.master')
 @section('konten')
-<div class="right_col" role="main">
+<div class="right_col" role="main" id="kanan">
 <!-- top tiles -->
 <div class="row tile_count">
     <?php
@@ -8,7 +8,11 @@
     ?>
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
     <span class="count_top"><i class="fa fa-user"></i> Total Item</span>
-    <div class="count"><?php echo $countassets ?></div>
+    <div class="count">
+        <p id="jumlah">
+            {{ $countassets}}
+        </p>
+    </div>
   </div>
 </div>
 <!-- /top tiles -->
@@ -116,6 +120,7 @@
                         data : {'_method' : 'DELETE', '_token' : csrf_token, permanent: false},
                         success : function(data) {
                             table.ajax.reload();
+                            $('#jumlah').text(data.jumlah);
                             swal({
                                 title: 'Success!',
                                 text: data.message,
@@ -147,6 +152,7 @@
     $(function(){
             $('#modal-form form').validator().on('submit', function (e) {
                 if (!e.isDefaultPrevented()){
+                    var url_hitung="{{ url('data') }}";
                     var id = $('#id').val();
                     if (save_method == 'add') url = "{{ url('data') }}";
                     else url = "{{ url('data') . '/' }}" + id;
@@ -160,6 +166,8 @@
                         success : function(data) {
                             $('#modal-form').modal('hide');
                             table.ajax.reload();
+                            
+                            $('#jumlah').text(data.jumlah);
                             swal({
                                 title: 'Success!',
                                 text: data.message,
