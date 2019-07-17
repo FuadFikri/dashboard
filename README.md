@@ -14,7 +14,7 @@
     - Jquery
     - AJAX
     - Yajra Datatables
-    - D3 js
+    - Three js 
  
  
 Demo : http://model3d.herokuapp.com
