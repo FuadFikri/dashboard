@@ -1,12 +1,20 @@
-## Tugas Mata Kuliah Proyek Sistem informasi
+# Tugas Mata Kuliah Proyek Sistem informasi
 
-# Sistem Informasi Manajemen asset AR
+## Sistem Informasi Manajemen asset AR
  - CRUD 
  - Preview asset 3D berekstensi (.fbx) di browser
  - API 
  - Authentication
  
  
+ # Tech Stack
+    - Laravel
+    - Template Gentelella Alela
+    - Bootstrap
+    - Jquery
+    - AJAX
+    - Yajra Datatables
+    - D3 js
  
  
 Demo : http://model3d.herokuapp.com
