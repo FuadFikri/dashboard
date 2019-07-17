@@ -2,8 +2,10 @@
 
 # Sistem Informasi Manajemen asset AR
  - CRUD 
- - Preview asset 3D berekstensi (.rbx) di browser
+ - Preview asset 3D berekstensi (.fbx) di browser
  - API 
+ - Authentication
+ 
  
  
  
